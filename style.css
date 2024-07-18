@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:600&display=swap");
+@keyframes active {
+  from {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 10px 0px rgba(0, 0, 250, 0.6); }
+  to {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1; } }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+:root {
+  --spacing: 20px;
+  --maxWidth: 1400px;
+  --borderColor: #242424;
+  --borderRadius: 20px 60px 20px 60px;
+  --tileSize: 100px;
+  --avatarSize: 300px;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background-color: #303030;
+  color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: normal;
+    word-wrap: normal;
+    hyphens: none;
+    text-align: justify;
+}
+
+.grid {
+ 
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px;
+  align-items: center;
+  justify-content: center;
+  }
+
+  button,
+  [role="button"] {
+    -webkit-appearance: none;
+    position: relative;
+    top: 5px;
+    right: 320px; /* Reset posisi horizontal untuk mobile */
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+    border-radius: 30px;
+    border: 1px solid #8F9092;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 0 #CECFD1;
+    transition: all .2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #fff;
+  }
+  
+  button::-moz-focus-inner,
+  [role="button"]::-moz-focus-inner {
+    border: 0;
+  }
+  
+  button > *,
+  [role="button"] > * {
+    transition: transform .2s ease;
+  }
+  
+  button:hover:not([disabled]),
+  [role="button"]:hover:not([disabled]) {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+    transform: scale(0.975);
+  }
+  
+  button:focus:not(:active),
+  [role="button"]:focus:not(:active) {
+    animation: active .9s alternate infinite;
+    outline: none;
+  }
+  
+  button:active:not([disabled]),
+  [role="button"]:active:not([disabled]) {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+    transform: scale(0.95);
+  }
+  
+  button:disabled,
+  [role="button"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  button.icon,
+  [role="button"].icon {
+    width: 50px;
+  }
+  
+  button.icon svg,
+  [role="button"].icon svg {
+    margin-top: 3px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Media query untuk perangkat mobile */
+  @media (max-width: 768px) {
+    button,
+    [role="button"] {
+      width: 100%; /* Membuat tombol mengisi lebar penuh */
+      margin-right: 0; /* Menghapus margin kanan jika ada */
+      right: 0px; /* Reset posisi horizontal untuk mobile */
+    }
+  }
+  
+.social-media {
+  display: flex;
+  justify-content: right;
+  margin-top: 1rem; /* Atur margin sesuai kebutuhan */
+}
+
+a {
+  text-decoration: none;
+}
+
+.social-media a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem; /* Ukuran ikon untuk perangkat mobile */
+  height: 2.5rem; /* Ukuran ikon untuk perangkat mobile */
+  background: transparent;
+  border: .2rem solid rgb(17, 151, 208);
+  border-radius: 50%;
+  font-size: 1.3rem; /* Ukuran font ikon */
+  color: rgb(17, 151, 208);
+  margin: 0.5rem; /* Atur margin sesuai kebutuhan */
+  transition: .5s ease;
+  text-decoration: none; /* Menghilangkan garis bawah dari link */
+}
+
+.social-media a:hover {
+  background: rgb(17, 151, 208);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 1rem var(--main-color);
+}
+
+.tile img {
+  width: 105px;
+  height: auto; /* This will maintain the aspect ratio */
+}
+
+.wrapper {
+  box-sizing: border-box;
+  margin: var(--spacing);
+  padding: var(--spacing);
+  max-height: calc(100vh - 1 * var(--spacing));
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: calc(var(--spacing) * 2);
+  background: #181818;
+  border: 1px solid var(--borderColor);
+  box-shadow: 0 8px 25px #020202 80;
+  border-radius: var(--borderRadius);
+  width: 100%;
+  max-width: var(--maxWidth);
+}
+.wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.wrapper::-webkit-scrollbar-thumb {
+  background: #020202 80;
+  border-radius: var(--borderRadius);
+}
+.wrapper .team-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing);
+}
+.wrapper .team-wrapper .members {
+  position: relative;
+  flex: 0 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.wrapper .team-wrapper .members .tile {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--tileSize);
+  height: var(--tileSize);
+  border-radius: var(--borderRadius); /* Border radius diatur di sini */
+  background: #020202 80;
+  overflow: hidden;
+  transform: scale(0.7);
+  filter: grayscale(1);
+  transition: all 0.2s ease;
+}
+
+/* CSS khusus untuk .tile yang tidak memerlukan border-radius */
+.wrapper .team-wrapper .members .tile.bundar {
+  border-radius: 50%; /* Menghilangkan border radius di sini */
+}
+.wrapper .team-wrapper .members .tile img {
+  display: flex;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+.wrapper .team-wrapper .members .tile:hover {
+  filter: grayscale(0.6);
+  transform: scale(0.8);
+}
+.wrapper .team-wrapper .members .tile.active {
+  box-shadow: 0 0 10px 10px #181818;
+  background: #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  transform: scale(1);
+  filter: grayscale(0);
+}
+.wrapper .team-wrapper .divider {
+  flex: 0 0 2px;
+  background: var(--borderColor);
+  border-radius: var(--borderRadius);
+  align-self: stretch;
+  box-shadow: 0 0 2px #020202 80;
+}
+.wrapper .team-wrapper .cards {
+  flex: 1 1 auto;
+}
+.wrapper .team-wrapper .cards .card-wrapper {
+  position: relative;
+  top: 0;
+}
+.wrapper .team-wrapper .cards .card-wrapper .card {
+  border-radius: var(--borderRadius);
+  border-bottom: 2px solid var(--borderColor);
+  background: #f8f8f8;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.6s ease;
+  position: absolute;
+  top: 0;
+}
+.wrapper .team-wrapper .cards .card-wrapper .card .avatar {
+  flex: 1 0 auto;
+  display: flex;
+  width: 100%;
+  max-height: 200px;
+  align-self: stretch;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wrapper .team-wrapper .cards .card-wrapper .card .avatar.custom-avatar {
+  border-radius: 15px;
+}
+.wrapper .team-wrapper .cards .card-wrapper .card .info {
+  padding: var(--spacing);
+  display: flex;
+  flex-flow: column nowrap;
+}
+.wrapper .team-wrapper .cards .card-wrapper .card .info .name {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+.wrapper .team-wrapper .cards .card-wrapper .card .info .title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(17, 151, 208);
+}
+.wrapper .team-wrapper .cards .card-wrapper .card .info .bio {
+  font-size: 16px;
+  font-weight: 300;
+  color: #303030;
+}
+.wrapper .team-wrapper .cards input {
+  appearance: unset;
+}
+.wrapper .team-wrapper .cards input:checked + .card {
+  visibility: visible;
+  opacity: 1;
+}
+.wrapper .intro-wrapper, .wrapper .cta-wrapper {
+  border-radius: var(--borderRadius);
+  border-top: 2px solid var(--borderColor);
+  padding: var(--spacing);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-flow: column nowrap;
+  min-height: 300px;
+  font-weight: 600;
+  font-size: 36px;
+}
+.wrapper .intro-wrapper {
+  border-radius: var(--borderRadius);
+  text-shadow: 0 2px 2px #151515;
+  background-image: linear-gradient(130deg, #303030 0%, #101010 100%);
+  font-size: 68px;
+  font-weight: 800;
+  border-top: none;
+  border-bottom: 3px solid var(--borderColor);
+}
+@media screen and (min-width: 1080px) {
+  .wrapper .team-wrapper .cards .card-wrapper .card {
+    flex-flow: row nowrap;
+ }
+  .wrapper .team-wrapper .cards .card-wrapper .card .avatar {
+    width: var(--avatarSize);
+    max-height: unset;
+    border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+ }
+  .wrapper .team-wrapper .cards .card-wrapper .card .info {
+    padding: calc(var(--spacing) * 2);
+ }
+}
+/* Media query untuk layar mobile */
+@media screen and (max-width: 768px) {
+  .social-media {
+    flex-wrap: wrap; /* Memungkinkan ikon untuk wrap ke baris baru jika tidak muat */
+    justify-content: center; /* Memastikan ikon tetap di tengah pada perangkat mobile */
+  }
+
+  .social-media a {
+    width: 2rem; /* Ukuran ikon untuk perangkat mobile */
+    height: 2rem; /* Ukuran ikon untuk perangkat mobile */
+    font-size: 1.1rem; /* Ukuran font ikon */
+    margin: 0.3rem; /* Atur margin sesuai kebutuhan */
+  }
+}
